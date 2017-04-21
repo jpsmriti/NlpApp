@@ -1,19 +1,18 @@
 package com.fi.mynlpapp;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
-    @Bind(R.id.qestion)
+    //@Bind(R.id.qestion)
     protected EditText question;
-    @Bind(R.id.answer)
+    //@Bind(R.id.answer)
     protected EditText answer;
 
     @Override
@@ -22,10 +21,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+
+        question = (EditText)findViewById(R.id.qestion);
+        answer = (EditText)findViewById(R.id.answer);
+
+        ((Button)findViewById(R.id.ask)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                askQuestion(v);
+            }
+        });
     }
 
-    @OnClick(R.id.ask)
-    protected void ask(View v){
+    //@OnClick(R.id.ask)
+    protected void askQuestion(View v){
         new ProcessingTask(MainActivity.this, question.getText().toString()).execute();
     }
 

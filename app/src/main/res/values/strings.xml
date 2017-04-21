@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyNlpApp</string>
+    <string name="many_strings">This is sentence1. And this is two. This is the third one!</string>
 </resources>
